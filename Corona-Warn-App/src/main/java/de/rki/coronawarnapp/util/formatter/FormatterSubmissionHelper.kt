@@ -210,8 +210,9 @@ fun formatSubmissionStatusCardFetchingVisible(
     uiStateState: ApiRequestState?
 ): Int = formatVisibility(
     deviceRegistered == true && (
-            uiStateState == ApiRequestState.STARTED ||
-                    uiStateState == ApiRequestState.FAILED)
+        uiStateState == ApiRequestState.STARTED ||
+            uiStateState == ApiRequestState.FAILED
+        )
 )
 
 fun formatSubmissionStatusCardUnregisteredVisible(
@@ -222,15 +223,15 @@ fun formatSubmissionStatusCardContentVisible(
     deviceUiState: DeviceUIState?
 ): Int = formatVisibility(
     deviceUiState == DeviceUIState.PAIRED_ERROR ||
-            deviceUiState == DeviceUIState.PAIRED_NEGATIVE ||
-            deviceUiState == DeviceUIState.PAIRED_NO_RESULT ||
-            deviceUiState == DeviceUIState.PAIRED_REDEEMED
+        deviceUiState == DeviceUIState.PAIRED_NEGATIVE ||
+        deviceUiState == DeviceUIState.PAIRED_NO_RESULT ||
+        deviceUiState == DeviceUIState.PAIRED_REDEEMED
 )
 
 fun formatShowSubmissionStatusPositiveCard(deviceUiState: DeviceUIState?): Int =
     formatVisibility(
         deviceUiState == DeviceUIState.PAIRED_POSITIVE ||
-                deviceUiState == DeviceUIState.PAIRED_POSITIVE_TELETAN
+            deviceUiState == DeviceUIState.PAIRED_POSITIVE_TELETAN
     )
 
 fun formatShowSubmissionDoneCard(deviceUiState: DeviceUIState?): Int =
@@ -239,8 +240,8 @@ fun formatShowSubmissionDoneCard(deviceUiState: DeviceUIState?): Int =
 fun formatShowRiskStatusCard(deviceUiState: DeviceUIState?): Int =
     formatVisibility(
         deviceUiState != DeviceUIState.PAIRED_POSITIVE &&
-                deviceUiState != DeviceUIState.PAIRED_POSITIVE_TELETAN &&
-                deviceUiState != DeviceUIState.SUBMITTED_FINAL
+            deviceUiState != DeviceUIState.PAIRED_POSITIVE_TELETAN &&
+            deviceUiState != DeviceUIState.SUBMITTED_FINAL
     )
 
 fun formatCountryIsoTagToLocalizedName(isoTag: String?): String {

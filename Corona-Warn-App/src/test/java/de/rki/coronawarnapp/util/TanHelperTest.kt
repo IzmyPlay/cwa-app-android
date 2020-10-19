@@ -37,7 +37,11 @@ class TanHelperTest {
     fun areCharactersValid() {
         // valid input strings (not necessarily valid TANs)
         val validStrings = arrayOf(
-            "ABCD", "2345", "PTPHM35RP4", "AAAAAAAAAA", "BBBBB"
+            "ABCD",
+            "2345",
+            "PTPHM35RP4",
+            "AAAAAAAAAA",
+            "BBBBB"
         )
         for (text in validStrings) {
             MatcherAssert.assertThat(
@@ -48,7 +52,11 @@ class TanHelperTest {
 
         // invalid input strings
         val invalidStrings = arrayOf(
-            "ABCDÖ", "01234", "PTPHM15RP4", "AAAAAA AAA", "BB.BBB"
+            "ABCDÖ",
+            "01234",
+            "PTPHM15RP4",
+            "AAAAAA AAA",
+            "BB.BBB"
         )
         for (text in invalidStrings) {
             MatcherAssert.assertThat(
@@ -62,7 +70,11 @@ class TanHelperTest {
     fun isChecksumValid() {
         // valid
         val validTans = arrayOf(
-            "9A3B578UMG", "DEU7TKSV3H", "PTPHM35RP4", "V923D59AT8", "H9NC5CQ34E"
+            "9A3B578UMG",
+            "DEU7TKSV3H",
+            "PTPHM35RP4",
+            "V923D59AT8",
+            "H9NC5CQ34E"
         )
         for (tan in validTans) {
             MatcherAssert.assertThat(

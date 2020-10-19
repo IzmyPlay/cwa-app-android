@@ -98,11 +98,14 @@ class SubmissionResultPositiveOtherWarningFragment :
             DialogHelper.showDialog(buildErrorDialog(it))
         }
 
-        submissionViewModel.submissionState.observe(viewLifecycleOwner, {
-            if (it == ApiRequestState.SUCCESS) {
-                navigateToSubmissionDoneFragment()
+        submissionViewModel.submissionState.observe(
+            viewLifecycleOwner,
+            {
+                if (it == ApiRequestState.SUCCESS) {
+                    navigateToSubmissionDoneFragment()
+                }
             }
-        })
+        )
     }
 
     private fun setButtonOnClickListener() {

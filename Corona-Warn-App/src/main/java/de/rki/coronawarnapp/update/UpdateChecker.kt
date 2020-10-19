@@ -74,7 +74,8 @@ class UpdateChecker(private val activity: LauncherActivity) {
             constructSemanticVersionString(minVersionFromServer)
 
         Timber.e(
-            "minVersionStringFromServer:%s", constructSemanticVersionString(
+            "minVersionStringFromServer:%s",
+            constructSemanticVersionString(
                 minVersionFromServer
             )
         )
@@ -92,7 +93,7 @@ class UpdateChecker(private val activity: LauncherActivity) {
         semanticVersion: ApplicationConfigurationOuterClass.SemanticVersion
     ): String {
         return semanticVersion.major.toString() + "." +
-                semanticVersion.minor.toString() + "." +
-                semanticVersion.patch.toString()
+            semanticVersion.minor.toString() + "." +
+            semanticVersion.patch.toString()
     }
 }

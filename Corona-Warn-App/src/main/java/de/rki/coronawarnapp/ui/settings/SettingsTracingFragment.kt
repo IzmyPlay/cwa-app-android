@@ -34,7 +34,8 @@ import kotlinx.coroutines.launch
  * @see InternalExposureNotificationClient
  * @see InternalExposureNotificationPermissionHelper
  */
-class SettingsTracingFragment : Fragment(R.layout.fragment_settings_tracing),
+class SettingsTracingFragment :
+    Fragment(R.layout.fragment_settings_tracing),
     InternalExposureNotificationPermissionHelper.Callback {
 
     companion object {
@@ -177,7 +178,8 @@ class SettingsTracingFragment : Fragment(R.layout.fragment_settings_tracing),
             R.string.onboarding_manual_required_dialog_body,
             R.string.onboarding_manual_required_dialog_button,
             null,
-            false, {
+            false,
+            {
                 // close dialog
             }
         )
@@ -191,11 +193,14 @@ class SettingsTracingFragment : Fragment(R.layout.fragment_settings_tracing),
             R.string.onboarding_tracing_body_consent,
             R.string.onboarding_button_enable,
             R.string.onboarding_button_cancel,
-            true, {
+            true,
+            {
                 internalExposureNotificationPermissionHelper.requestPermissionToStartTracing()
-            }, {
+            },
+            {
                 tracingViewModel.refreshIsTracingEnabled()
-            })
+            }
+        )
         DialogHelper.showDialog(dialog)
     }
 }

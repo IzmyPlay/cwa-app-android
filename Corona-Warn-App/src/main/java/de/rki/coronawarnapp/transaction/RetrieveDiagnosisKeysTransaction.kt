@@ -199,7 +199,7 @@ object RetrieveDiagnosisKeysTransaction : Transaction() {
                 .asyncRetrieveApplicationConfiguration()
                 .supportedCountriesList
         }
-            invokeSubmissionStartedInDebugOrBuildMode()
+        invokeSubmissionStartedInDebugOrBuildMode()
 
         val availableKeyFiles = executeFetchKeyFilesFromServer(countries)
 
@@ -208,9 +208,12 @@ object RetrieveDiagnosisKeysTransaction : Transaction() {
         }
 
         if (CWADebug.isDebugBuildOrMode) {
-            val totalFileSize = availableKeyFiles.fold(0L, { acc, file ->
-                file.length() + acc
-            })
+            val totalFileSize = availableKeyFiles.fold(
+                0L,
+                { acc, file ->
+                    file.length() + acc
+                }
+            )
 
             onKeyFilesDownloadFinished?.invoke(availableKeyFiles.size, totalFileSize)
             onKeyFilesDownloadFinished = null

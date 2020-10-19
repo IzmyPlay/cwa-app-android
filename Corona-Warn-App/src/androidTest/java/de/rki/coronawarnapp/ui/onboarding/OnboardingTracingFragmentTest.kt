@@ -21,9 +21,11 @@ class OnboardingTracingFragmentTest : BaseUITest() {
     fun setup() {
         MockKAnnotations.init(this, relaxed = true)
 
-        setupMockViewModel(object : OnboardingTracingFragmentViewModel.Factory {
-            override fun create(): OnboardingTracingFragmentViewModel = viewModel
-        })
+        setupMockViewModel(
+            object : OnboardingTracingFragmentViewModel.Factory {
+                override fun create(): OnboardingTracingFragmentViewModel = viewModel
+            }
+        )
     }
 
     @After

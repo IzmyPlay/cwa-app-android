@@ -52,5 +52,6 @@ class TransmissionRiskVectorDeterminator @Inject constructor(
             }
             Indication.NEGATIVE -> intArrayOf(4, 4, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
             Indication.NO_INFORMATION -> intArrayOf(5, 6, 7, 7, 7, 6, 4, 3, 2, 1, 1, 1, 1, 1, 1)
-        })
+        }
+    )
 }

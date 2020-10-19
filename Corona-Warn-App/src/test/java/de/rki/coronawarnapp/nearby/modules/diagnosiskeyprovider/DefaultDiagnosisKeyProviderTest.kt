@@ -77,16 +77,22 @@ class DefaultDiagnosisKeyProviderTest : BaseTest() {
 
         coVerify(exactly = 0) {
             googleENFClient.provideDiagnosisKeys(
-                exampleKeyFiles, exampleConfiguration, exampleToken
+                exampleKeyFiles,
+                exampleConfiguration,
+                exampleToken
             )
         }
 
         coVerify(exactly = 1) {
             googleENFClient.provideDiagnosisKeys(
-                listOf(exampleKeyFiles[0]), exampleConfiguration, exampleToken
+                listOf(exampleKeyFiles[0]),
+                exampleConfiguration,
+                exampleToken
             )
             googleENFClient.provideDiagnosisKeys(
-                listOf(exampleKeyFiles[1]), exampleConfiguration, exampleToken
+                listOf(exampleKeyFiles[1]),
+                exampleConfiguration,
+                exampleToken
             )
             submissionQuota.consumeQuota(2)
         }
@@ -105,7 +111,9 @@ class DefaultDiagnosisKeyProviderTest : BaseTest() {
         coVerify(exactly = 1) {
             googleENFClient.provideDiagnosisKeys(any(), any(), any())
             googleENFClient.provideDiagnosisKeys(
-                exampleKeyFiles, exampleConfiguration, exampleToken
+                exampleKeyFiles,
+                exampleConfiguration,
+                exampleToken
             )
             submissionQuota.consumeQuota(1)
         }
@@ -141,10 +149,14 @@ class DefaultDiagnosisKeyProviderTest : BaseTest() {
 
         coVerify(exactly = 1) {
             googleENFClient.provideDiagnosisKeys(
-                listOf(exampleKeyFiles[0]), fallback, exampleToken
+                listOf(exampleKeyFiles[0]),
+                fallback,
+                exampleToken
             )
             googleENFClient.provideDiagnosisKeys(
-                listOf(exampleKeyFiles[1]), fallback, exampleToken
+                listOf(exampleKeyFiles[1]),
+                fallback,
+                exampleToken
             )
             submissionQuota.consumeQuota(2)
         }
@@ -164,7 +176,9 @@ class DefaultDiagnosisKeyProviderTest : BaseTest() {
         coVerify(exactly = 1) {
             googleENFClient.provideDiagnosisKeys(any(), any(), any())
             googleENFClient.provideDiagnosisKeys(
-                exampleKeyFiles, exampleConfiguration, exampleToken
+                exampleKeyFiles,
+                exampleConfiguration,
+                exampleToken
             )
             submissionQuota.consumeQuota(1)
         }
@@ -183,16 +197,22 @@ class DefaultDiagnosisKeyProviderTest : BaseTest() {
 
         coVerify(exactly = 0) {
             googleENFClient.provideDiagnosisKeys(
-                exampleKeyFiles, exampleConfiguration, exampleToken
+                exampleKeyFiles,
+                exampleConfiguration,
+                exampleToken
             )
         }
 
         coVerify(exactly = 1) {
             googleENFClient.provideDiagnosisKeys(
-                listOf(exampleKeyFiles[0]), exampleConfiguration, exampleToken
+                listOf(exampleKeyFiles[0]),
+                exampleConfiguration,
+                exampleToken
             )
             googleENFClient.provideDiagnosisKeys(
-                listOf(exampleKeyFiles[1]), exampleConfiguration, exampleToken
+                listOf(exampleKeyFiles[1]),
+                exampleConfiguration,
+                exampleToken
             )
             submissionQuota.consumeQuota(2)
         }

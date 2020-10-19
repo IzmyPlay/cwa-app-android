@@ -24,7 +24,8 @@ class CountryDataTest : BaseTest() {
     @Test
     fun `missing days default`() {
         val availableDates = listOf(
-            "2222-12-30", "2222-12-31"
+            "2222-12-30",
+            "2222-12-31"
         ).map { LocalDate.parse(it) }
         val cd = CountryDays(locationCode, availableDates)
 
@@ -59,7 +60,8 @@ class CountryDataTest : BaseTest() {
     @Test
     fun `missing days empty cache`() {
         val availableDates = listOf(
-            "2222-11-28", "2222-11-29"
+            "2222-11-28",
+            "2222-11-29"
         ).map { LocalDate.parse(it) }
         val cd = CountryDays(locationCode, availableDates)
 
@@ -74,7 +76,8 @@ class CountryDataTest : BaseTest() {
     @Test
     fun `missing days disjunct`() {
         val availableDates = listOf(
-            "2222-11-28", "2222-11-29"
+            "2222-11-28",
+            "2222-11-29"
         ).map { LocalDate.parse(it) }
         val cd = CountryDays(locationCode, availableDates)
 
@@ -92,7 +95,8 @@ class CountryDataTest : BaseTest() {
     @Test
     fun `missing days none missing`() {
         val availableDates = listOf(
-            "2222-12-30", "2222-12-31"
+            "2222-12-30",
+            "2222-12-31"
         ).map { LocalDate.parse(it) }
         val cd = CountryDays(locationCode, availableDates)
 
@@ -111,10 +115,12 @@ class CountryDataTest : BaseTest() {
     fun `missing hours default`() {
         val availableHours = mapOf(
             LocalDate.parse("2222-12-30") to listOf(
-                LocalTime.parse("19:00"), LocalTime.parse("20:00")
+                LocalTime.parse("19:00"),
+                LocalTime.parse("20:00")
             ),
             LocalDate.parse("2222-12-31") to listOf(
-                LocalTime.parse("22:00"), LocalTime.parse("23:00")
+                LocalTime.parse("22:00"),
+                LocalTime.parse("23:00")
             )
         )
         val cd = CountryHours(locationCode, availableHours)
@@ -173,10 +179,12 @@ class CountryDataTest : BaseTest() {
     fun `missing hours empty cache`() {
         val availableHours = mapOf(
             LocalDate.parse("2222-12-30") to listOf(
-                LocalTime.parse("19:00"), LocalTime.parse("20:00")
+                LocalTime.parse("19:00"),
+                LocalTime.parse("20:00")
             ),
             LocalDate.parse("2222-12-31") to listOf(
-                LocalTime.parse("22:00"), LocalTime.parse("23:00")
+                LocalTime.parse("22:00"),
+                LocalTime.parse("23:00")
             )
         )
         val cd = CountryHours(locationCode, availableHours)
@@ -193,10 +201,12 @@ class CountryDataTest : BaseTest() {
     fun `missing hours disjunct`() {
         val availableHours = mapOf(
             LocalDate.parse("2222-12-30") to listOf(
-                LocalTime.parse("19:00"), LocalTime.parse("20:00")
+                LocalTime.parse("19:00"),
+                LocalTime.parse("20:00")
             ),
             LocalDate.parse("2222-12-31") to listOf(
-                LocalTime.parse("22:00"), LocalTime.parse("23:00")
+                LocalTime.parse("22:00"),
+                LocalTime.parse("23:00")
             )
         )
         val cd = CountryHours(locationCode, availableHours)
@@ -216,10 +226,12 @@ class CountryDataTest : BaseTest() {
     fun `missing hours none missing`() {
         val availableHours = mapOf(
             LocalDate.parse("2222-12-30") to listOf(
-                LocalTime.parse("19:00"), LocalTime.parse("20:00")
+                LocalTime.parse("19:00"),
+                LocalTime.parse("20:00")
             ),
             LocalDate.parse("2222-12-31") to listOf(
-                LocalTime.parse("22:00"), LocalTime.parse("23:00")
+                LocalTime.parse("22:00"),
+                LocalTime.parse("23:00")
             )
         )
         val cd = CountryHours(locationCode, availableHours)

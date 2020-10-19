@@ -44,24 +44,28 @@ class DiagnosisTestResultRetrievalPeriodicWorker(
 
         Timber.d("Background job started. Run attempt: $runAttemptCount")
         BackgroundWorkHelper.sendDebugNotification(
-            "TestResult Executing: Start", "TestResult started. Run attempt: $runAttemptCount ")
+            "TestResult Executing: Start",
+            "TestResult started. Run attempt: $runAttemptCount "
+        )
 
         if (runAttemptCount > BackgroundConstants.WORKER_RETRY_COUNT_THRESHOLD) {
             Timber.d("Background job failed after $runAttemptCount attempts. Rescheduling")
 
             BackgroundWorkHelper.sendDebugNotification(
-                "TestResult Executing: Failure", "TestResult failed with $runAttemptCount attempts")
+                "TestResult Executing: Failure",
+                "TestResult failed with $runAttemptCount attempts"
+            )
 
             BackgroundWorkScheduler.scheduleDiagnosisKeyPeriodicWork()
             return Result.failure()
         }
         var result = Result.success()
         try {
-            if (TimeAndDateExtensions.calculateDays(
-                    LocalData.initialPollingForTestResultTimeStamp(),
-                    System.currentTimeMillis()
-                ) < BackgroundConstants.POLLING_VALIDITY_MAX_DAYS
-            ) {
+            val daysPollingActive = TimeAndDateExtensions.calculateDays(
+                LocalData.initialPollingForTestResultTimeStamp(),
+                System.currentTimeMillis()
+            )
+            if (daysPollingActive < BackgroundConstants.POLLING_VALIDITY_MAX_DAYS) {
                 val testResult = SubmissionService.asyncRequestTestResult()
                 initiateNotification(testResult)
             } else {
@@ -72,7 +76,9 @@ class DiagnosisTestResultRetrievalPeriodicWorker(
         }
 
         BackgroundWorkHelper.sendDebugNotification(
-            "TestResult Executing: End", "TestResult result: $result ")
+            "TestResult Executing: End",
+            "TestResult result: $result "
+        )
 
         return result
     }
@@ -95,7 +101,8 @@ class DiagnosisTestResultRetrievalPeriodicWorker(
             if (!CoronaWarnApplication.isAppInForeground) {
                 NotificationHelper.sendNotification(
                     CoronaWarnApplication.getAppContext()
-                        .getString(R.string.notification_name), CoronaWarnApplication.getAppContext()
+                        .getString(R.string.notification_name),
+                    CoronaWarnApplication.getAppContext()
                         .getString(R.string.notification_body),
                     NotificationCompat.PRIORITY_HIGH
                 )
@@ -116,6 +123,8 @@ class DiagnosisTestResultRetrievalPeriodicWorker(
         BackgroundWorkScheduler.WorkType.DIAGNOSIS_TEST_RESULT_PERIODIC_WORKER.stop()
 
         BackgroundWorkHelper.sendDebugNotification(
-            "TestResult Stopped", "TestResult Stopped")
+            "TestResult Stopped",
+            "TestResult Stopped"
+        )
     }
 }

@@ -238,9 +238,10 @@ fun formatRiskActiveTracingDaysInRetentionPeriodLogged(
     activeTracingDaysInRetentionPeriod: Long
 ): String {
     val appContext = CoronaWarnApplication.getAppContext()
-        return appContext.getString(
-                R.string.risk_details_information_body_period_logged_assessment)
-            .format(activeTracingDaysInRetentionPeriod)
+    return appContext.getString(
+        R.string.risk_details_information_body_period_logged_assessment
+    )
+        .format(activeTracingDaysInRetentionPeriod)
 }
 
 fun formatRelativeDateTimeString(appContext: Context, date: Date): CharSequence? =
@@ -356,7 +357,8 @@ fun formatRiskDetailsRiskLevelBody(riskLevelScore: Int?, daysSinceLastExposure: 
                 if (count > 0)
                     R.string.risk_details_information_body_low_risk_with_encounter
                 else
-                    R.string.risk_details_information_body_low_risk)
+                    R.string.risk_details_information_body_low_risk
+            )
         RiskLevelConstants.UNKNOWN_RISK_INITIAL ->
             appContext.getString(R.string.risk_details_information_body_unknown_risk)
         else -> ""
@@ -516,13 +518,15 @@ fun formatRiskDetailsButtonEnableTracingVisibility(
 fun formatRiskDetailsButtonVisibility(
     riskLevelScore: Int?,
     isBackgroundJobEnabled: Boolean?
-): Int = formatVisibility(
-    formatRiskDetailsButtonEnableTracingVisibility(riskLevelScore) == View.VISIBLE ||
-            formatDetailsButtonUpdateVisibility(
-                isBackgroundJobEnabled,
-                riskLevelScore
-            ) == View.VISIBLE
-)
+): Int {
+    val isRiskButtonVisible =
+        formatRiskDetailsButtonEnableTracingVisibility(riskLevelScore) == View.VISIBLE
+    val isDetailsButtonVisible = formatDetailsButtonUpdateVisibility(
+        isBackgroundJobEnabled,
+        riskLevelScore
+    ) == View.VISIBLE
+    return formatVisibility(isRiskButtonVisible || isDetailsButtonVisible)
+}
 
 /**
  * Formats the risk card button display for manual updates depending on risk level,
@@ -538,10 +542,11 @@ fun formatButtonUpdateVisibility(
     isBackgroundJobEnabled: Boolean?,
     showDetails: Boolean?
 ): Int = formatVisibility(
-    (!isTracingOffRiskLevel(riskLevelScore) &&
+    (
+        !isTracingOffRiskLevel(riskLevelScore) &&
             isBackgroundJobEnabled != true &&
             showDetails != true
-            )
+        )
 )
 
 /**
@@ -557,9 +562,9 @@ fun formatDetailsButtonUpdateVisibility(
     riskLevelScore: Int?
 ): Int = formatVisibility(
     (
-            !isTracingOffRiskLevel(riskLevelScore) &&
-                    isBackgroundJobEnabled != true
-            )
+        !isTracingOffRiskLevel(riskLevelScore) &&
+            isBackgroundJobEnabled != true
+        )
 )
 
 /*Behavior*/
@@ -603,7 +608,8 @@ fun formatVisibilityBehaviorLowLevelRisk(riskLevelScore: Int?): Int =
 fun formatVisibilityBehaviorPeriodLogged(riskLevelScore: Int?): Int =
     formatVisibility(
         riskLevelScore == RiskLevelConstants.INCREASED_RISK ||
-                riskLevelScore == RiskLevelConstants.LOW_LEVEL_RISK)
+            riskLevelScore == RiskLevelConstants.LOW_LEVEL_RISK
+    )
 
 /**
  * Formats the risk details suggested behavior icon color depending on risk level

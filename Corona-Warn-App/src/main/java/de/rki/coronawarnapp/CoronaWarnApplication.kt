@@ -62,7 +62,8 @@ class CoronaWarnApplication : Application(), HasAndroidInjector {
 
         // notification to test the WakeUpService from Google when the app was force stopped
         BackgroundWorkHelper.sendDebugNotification(
-            "Application onCreate", "App was woken up"
+            "Application onCreate",
+            "App was woken up"
         )
         watchdogService.launch()
     }

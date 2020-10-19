@@ -196,7 +196,8 @@ abstract class Transaction {
         if (unique && internalMutualExclusionLock.isLocked) {
             Timber.tag(TAG).w(
                 "TRANSACTION WITH ID %s ALREADY RUNNING (%s) AS UNIQUE, SKIPPING EXECUTION.",
-                transactionId, currentTransactionState
+                transactionId,
+                currentTransactionState
             )
             return
         }
@@ -213,7 +214,10 @@ abstract class Transaction {
 
                 Timber.tag(TAG).i(
                     "TRANSACTION %s COMPLETED (%d) in %d ms, STATES EXECUTED: %s",
-                    transactionId, System.currentTimeMillis(), duration, getExecutedStates()
+                    transactionId,
+                    System.currentTimeMillis(),
+                    duration,
+                    getExecutedStates()
                 )
 
                 resetExecutedStateStack()

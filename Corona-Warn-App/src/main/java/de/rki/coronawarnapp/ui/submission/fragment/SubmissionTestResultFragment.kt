@@ -89,11 +89,14 @@ class SubmissionTestResultFragment : Fragment(R.layout.fragment_submission_test_
             DialogHelper.showDialog(buildErrorDialog(it))
         }
 
-        submissionViewModel.deviceUiState.observe(viewLifecycleOwner, { uiState ->
-            if (uiState == DeviceUIState.PAIRED_REDEEMED) {
-                showRedeemedTokenWarningDialog()
+        submissionViewModel.deviceUiState.observe(
+            viewLifecycleOwner,
+            { uiState ->
+                if (uiState == DeviceUIState.PAIRED_REDEEMED) {
+                    showRedeemedTokenWarningDialog()
+                }
             }
-        })
+        )
     }
 
     private fun showRedeemedTokenWarningDialog() {

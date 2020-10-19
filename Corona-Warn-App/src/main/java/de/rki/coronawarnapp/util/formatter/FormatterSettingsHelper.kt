@@ -137,16 +137,16 @@ fun formatTracingContentDescription(
     return when (tracingStatusHelper(tracing, bluetooth, location)) {
         TracingStatusHelper.BLUETOOTH ->
             appContext.getString(R.string.settings_tracing_body_bluetooth_inactive) +
-                    " " + appContext.getString(R.string.accessibility_button)
+                " " + appContext.getString(R.string.accessibility_button)
         TracingStatusHelper.LOCATION ->
             appContext.getString(R.string.settings_tracing_body_inactive_location) +
-                    " " + appContext.getString(R.string.accessibility_button)
+                " " + appContext.getString(R.string.accessibility_button)
         TracingStatusHelper.TRACING_ACTIVE ->
             appContext.getString(R.string.settings_tracing_body_active) +
-                    " " + appContext.getString(R.string.accessibility_button)
+                " " + appContext.getString(R.string.accessibility_button)
         TracingStatusHelper.TRACING_INACTIVE ->
             appContext.getString(R.string.settings_tracing_body_inactive) +
-                    " " + appContext.getString(R.string.accessibility_button)
+                " " + appContext.getString(R.string.accessibility_button)
         else -> ""
     }
 }
@@ -468,6 +468,6 @@ fun formatTracingStatusVisibilityTracing(
     val tracingStatus = tracingStatusHelper(tracing, bluetooth, location)
     return formatVisibility(
         tracingStatus == TracingStatusHelper.TRACING_ACTIVE ||
-                tracingStatus == TracingStatusHelper.TRACING_INACTIVE
+            tracingStatus == TracingStatusHelper.TRACING_INACTIVE
     )
 }

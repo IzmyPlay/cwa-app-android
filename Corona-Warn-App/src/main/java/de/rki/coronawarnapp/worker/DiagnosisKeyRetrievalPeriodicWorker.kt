@@ -27,7 +27,8 @@ class DiagnosisKeyRetrievalPeriodicWorker(val context: Context, workerParams: Wo
         Timber.d("$id: doWork() started. Run attempt: $runAttemptCount")
 
         BackgroundWorkHelper.sendDebugNotification(
-            "KeyPeriodic Executing: Start", "KeyPeriodic started. Run attempt: $runAttemptCount"
+            "KeyPeriodic Executing: Start",
+            "KeyPeriodic started. Run attempt: $runAttemptCount"
         )
 
         var result = Result.success()
@@ -35,7 +36,8 @@ class DiagnosisKeyRetrievalPeriodicWorker(val context: Context, workerParams: Wo
             BackgroundWorkScheduler.scheduleDiagnosisKeyOneTimeWork()
         } catch (e: Exception) {
             Timber.w(
-                e, "$id: Error during BackgroundWorkScheduler.scheduleDiagnosisKeyOneTimeWork()."
+                e,
+                "$id: Error during BackgroundWorkScheduler.scheduleDiagnosisKeyOneTimeWork()."
             )
 
             if (runAttemptCount > BackgroundConstants.WORKER_RETRY_COUNT_THRESHOLD) {
@@ -54,7 +56,8 @@ class DiagnosisKeyRetrievalPeriodicWorker(val context: Context, workerParams: Wo
         }
 
         BackgroundWorkHelper.sendDebugNotification(
-            "KeyPeriodic Executing: End", "KeyPeriodic result: $result "
+            "KeyPeriodic Executing: End",
+            "KeyPeriodic result: $result "
         )
 
         Timber.d("$id: doWork() finished with %s", result)

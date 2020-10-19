@@ -40,7 +40,7 @@ class DefaultRiskLevelCalculation @Inject constructor() : RiskLevelCalculation {
 
         val attenuationStrings =
             "Weighted Attenuation: ($weightedAttenuationLow + $weightedAttenuationMid + " +
-                    "$weightedAttenuationHigh + $defaultBucketOffset)"
+                "$weightedAttenuationHigh + $defaultBucketOffset)"
         Timber.v(attenuationStrings)
 
         val weightedAttenuationDuration =

@@ -10,7 +10,8 @@ import javax.inject.Singleton
 
 @Module(
     includes = [
-        QueueingTaskModule::class]
+        QueueingTaskModule::class
+    ]
 )
 class TaskModule {
 

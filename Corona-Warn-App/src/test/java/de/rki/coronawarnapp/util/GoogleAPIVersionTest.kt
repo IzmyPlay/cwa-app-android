@@ -66,7 +66,7 @@ internal class GoogleAPIVersionTest {
     @Test
     fun `isAbove API v16 false when APIException for too low version`() {
         coEvery { InternalExposureNotificationClient.getVersion() } throws
-                ApiException(Status(API_NOT_CONNECTED))
+            ApiException(Status(API_NOT_CONNECTED))
 
         runBlockingTest {
             classUnderTest.isAtLeast(GoogleAPIVersion.V16) shouldBe false

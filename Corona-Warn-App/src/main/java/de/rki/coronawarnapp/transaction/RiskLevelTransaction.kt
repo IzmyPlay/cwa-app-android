@@ -324,7 +324,7 @@ object RiskLevelTransaction : Transaction() {
                     )
 
             /** we only return outdated risk level if the threshold is reached AND the active tracing time is above the
-            defined threshold because [UNKNOWN_RISK_INITIAL] overrules [UNKNOWN_RISK_OUTDATED_RESULTS] */
+             defined threshold because [UNKNOWN_RISK_INITIAL] overrules [UNKNOWN_RISK_OUTDATED_RESULTS] */
             if (timeSinceLastDiagnosisKeyFetchFromServer.millisecondsToHours() >
                 TimeVariables.getMaxStaleExposureRiskRange() && isActiveTracingTimeAboveThreshold()
             ) {
@@ -374,13 +374,13 @@ object RiskLevelTransaction : Transaction() {
      * @return the values of the application configuration
      */
     private suspend fun executeRetrieveApplicationConfiguration():
-            ApplicationConfigurationOuterClass.ApplicationConfiguration =
-        executeState(RETRIEVE_APPLICATION_CONFIG) {
-            return@executeState getApplicationConfiguration()
-                .also {
-                    Timber.tag(TAG).v("$transactionId - retrieved configuration from backend")
-                }
-        }
+        ApplicationConfigurationOuterClass.ApplicationConfiguration =
+            executeState(RETRIEVE_APPLICATION_CONFIG) {
+                return@executeState getApplicationConfiguration()
+                    .also {
+                        Timber.tag(TAG).v("$transactionId - retrieved configuration from backend")
+                    }
+            }
 
     /**
      * Executes the [RETRIEVE_EXPOSURE_SUMMARY] Transaction State
@@ -444,12 +444,12 @@ object RiskLevelTransaction : Transaction() {
                 ?: throw RiskLevelCalculationException(IllegalStateException("no high risk score class found"))
 
         // if the calculated risk score is above the defined level threshold we return the high level risk score
-        if (riskScoreAnalysis.withinDefinedLevelThreshold(
-                riskScore,
-                highRiskScoreClass.min,
-                highRiskScoreClass.max
-            )
-        ) {
+        val isWithinThreshold = riskScoreAnalysis.withinDefinedLevelThreshold(
+            riskScore,
+            highRiskScoreClass.min,
+            highRiskScoreClass.max
+        )
+        if (isWithinThreshold) {
             Timber.tag(TAG).v("$riskScore is above the defined min value ${highRiskScoreClass.min}")
             return INCREASED_RISK
         } else if (riskScore > highRiskScoreClass.max) {
@@ -549,7 +549,7 @@ object RiskLevelTransaction : Transaction() {
         return (activeTracingDurationInHours >= durationTracingIsActiveThreshold).also {
             Timber.tag(TAG).v(
                 "active tracing time ($activeTracingDurationInHours h) is above threshold " +
-                        "($durationTracingIsActiveThreshold h): $it"
+                    "($durationTracingIsActiveThreshold h): $it"
             )
         }
     }

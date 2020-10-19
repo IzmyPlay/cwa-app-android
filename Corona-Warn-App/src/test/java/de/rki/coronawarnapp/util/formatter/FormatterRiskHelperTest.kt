@@ -62,7 +62,8 @@ class FormatterRiskHelperTest {
     private fun formatRiskLevelHeadlineBase(iRiskLevelScore: Int?, bIsRefreshing: Boolean?, sValue: String) {
         val result = formatRiskLevelHeadline(riskLevelScore = iRiskLevelScore, isRefreshing = bIsRefreshing)
         assertThat(
-            result, `is`(sValue)
+            result,
+            `is`(sValue)
         )
     }
 
@@ -73,7 +74,8 @@ class FormatterRiskHelperTest {
 
         val result = formatRiskBody(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(sValue)
+            result,
+            `is`(sValue)
         )
     }
 
@@ -89,7 +91,8 @@ class FormatterRiskHelperTest {
             riskLevelScoreLastSuccessfulCalculated = iRiskLevelScoreLastSuccessfulCalculated
         )
         assertThat(
-            result, `is`(sValue)
+            result,
+            `is`(sValue)
         )
     }
 
@@ -98,7 +101,8 @@ class FormatterRiskHelperTest {
 
         val result = formatRiskContact(riskLevelScore = iRiskLevelScore, matchedKeysCount = iMatchedKeysCount)
         assertThat(
-            result, `is`(sValue)
+            result,
+            `is`(sValue)
         )
     }
 
@@ -108,7 +112,8 @@ class FormatterRiskHelperTest {
         val result =
             formatRiskContactLast(riskLevelScore = iRiskLevelScore, daysSinceLastExposure = iDaysSinceLastExposure)
         assertThat(
-            result, `is`(sValue)
+            result,
+            `is`(sValue)
         )
     }
 
@@ -126,7 +131,8 @@ class FormatterRiskHelperTest {
             activeTracingDaysInRetentionPeriod = lActiveTracingDaysInRetentionPeriod
         )
         assertThat(
-            result, `is`(sValue)
+            result,
+            `is`(sValue)
         )
     }
 
@@ -150,7 +156,8 @@ class FormatterRiskHelperTest {
             lastTimeDiagnosisKeysFetched = dLastTimeDiagnosisKeysFetched
         )
         assertThat(
-            result, `is`(sValue)
+            result,
+            `is`(sValue)
         )
     }
 
@@ -167,7 +174,8 @@ class FormatterRiskHelperTest {
                 isBackgroundJobEnabled = bIsBackgroundJobEnabled
             )
         assertThat(
-            result, `is`(sValue)
+            result,
+            `is`(sValue)
         )
     }
 
@@ -187,7 +195,8 @@ class FormatterRiskHelperTest {
             matchedKeysCount = iMatchedKeysCount
         )
         assertThat(
-            result, `is`(sValue)
+            result,
+            `is`(sValue)
         )
     }
 
@@ -200,7 +209,8 @@ class FormatterRiskHelperTest {
 
         val result = formatRiskColorStateList(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(colorStateList)
+            result,
+            `is`(colorStateList)
         )
     }
 
@@ -212,7 +222,8 @@ class FormatterRiskHelperTest {
 
         val result = formatRiskColor(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(iValue)
+            result,
+            `is`(iValue)
         )
     }
 
@@ -221,7 +232,8 @@ class FormatterRiskHelperTest {
 
         val result = formatRiskShape(showDetails = bShowDetails)
         assertThat(
-            result, `is`(drawable)
+            result,
+            `is`(drawable)
         )
     }
 
@@ -230,7 +242,8 @@ class FormatterRiskHelperTest {
 
         val result = formatStableIconColor(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(R.color.colorStableLight)
+            result,
+            `is`(R.color.colorStableLight)
         )
     }
 
@@ -239,7 +252,8 @@ class FormatterRiskHelperTest {
 
         val result = formatStableTextColor(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(R.color.colorStableLight)
+            result,
+            `is`(R.color.colorStableLight)
         )
     }
 
@@ -248,7 +262,8 @@ class FormatterRiskHelperTest {
 
         val result = formatStableDividerColor(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(R.color.colorStableLight)
+            result,
+            `is`(R.color.colorStableLight)
         )
     }
 
@@ -257,21 +272,24 @@ class FormatterRiskHelperTest {
 
         val result = formatRiskContactIcon(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(drawable)
+            result,
+            `is`(drawable)
         )
     }
 
     private fun formatButtonEnableTracingVisibilityBase(iRiskLevelScore: Int?, bShowDetails: Boolean?, iValue: Int) {
         val result = formatButtonEnableTracingVisibility(riskLevelScore = iRiskLevelScore, showDetails = bShowDetails)
         assertThat(
-            result, `is`(iValue)
+            result,
+            `is`(iValue)
         )
     }
 
     private fun formatRiskDetailsButtonEnableTracingVisibilityBase(iRiskLevelScore: Int?, iValue: Int) {
         val result = formatRiskDetailsButtonEnableTracingVisibility(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(iValue)
+            result,
+            `is`(iValue)
         )
     }
 
@@ -285,7 +303,8 @@ class FormatterRiskHelperTest {
             isBackgroundJobEnabled = bIsBackgroundJobEnabled
         )
         assertThat(
-            result, `is`(iValue)
+            result,
+            `is`(iValue)
         )
     }
 
@@ -301,7 +320,8 @@ class FormatterRiskHelperTest {
             showDetails = bShowDetails
         )
         assertThat(
-            result, `is`(iValue)
+            result,
+            `is`(iValue)
         )
     }
 
@@ -315,49 +335,56 @@ class FormatterRiskHelperTest {
             isBackgroundJobEnabled = bIsBackgroundJobEnabled
         )
         assertThat(
-            result, `is`(iValue)
+            result,
+            `is`(iValue)
         )
     }
 
     private fun formatVisibilityBehaviorBase(iRiskLevelScore: Int?, iValue: Int) {
         val result = formatVisibilityBehavior(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(iValue)
+            result,
+            `is`(iValue)
         )
     }
 
     private fun formatVisibilityBehaviorIncreasedRiskBase(iRiskLevelScore: Int?, iValue: Int) {
         val result = formatVisibilityBehaviorIncreasedRisk(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(iValue)
+            result,
+            `is`(iValue)
         )
     }
 
     private fun formatBehaviorIconBase(iRiskLevelScore: Int?, iValue: Int) {
         val result = formatBehaviorIcon(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(iValue)
+            result,
+            `is`(iValue)
         )
     }
 
     private fun formatBehaviorIconBackgroundBase(iRiskLevelScore: Int?, iValue: Int) {
         val result = formatBehaviorIconBackground(riskLevelScore = iRiskLevelScore)
         assertThat(
-            result, `is`(iValue)
+            result,
+            `is`(iValue)
         )
     }
 
     private fun formatButtonUpdateEnabledBase(bEnabled: Boolean?, bValue: Boolean) {
         val result = formatButtonUpdateEnabled(enabled = bEnabled)
         assertThat(
-            result, `is`(bValue)
+            result,
+            `is`(bValue)
         )
     }
 
     private fun formatButtonUpdateTextBase(lTime: Long, sValue: String) {
         val result = formatButtonUpdateText(time = lTime)
         assertThat(
-            result, `is`(sValue)
+            result,
+            `is`(sValue)
         )
     }
 
@@ -1003,8 +1030,12 @@ class FormatterRiskHelperTest {
             sValue = context.getString(R.string.risk_details_information_body_unknown_risk)
         )
 
-        formatRiskDetailsRiskLevelBodyBase(iRiskLevelScore = null, iDaysSinceLastExposure = null,
-            iMatchedKeysCount = 0, sValue = "")
+        formatRiskDetailsRiskLevelBodyBase(
+            iRiskLevelScore = null,
+            iDaysSinceLastExposure = null,
+            iMatchedKeysCount = 0,
+            sValue = ""
+        )
         formatRiskDetailsRiskLevelBodyBase(
             iRiskLevelScore = RiskLevelConstants.INCREASED_RISK,
             iDaysSinceLastExposure = null,

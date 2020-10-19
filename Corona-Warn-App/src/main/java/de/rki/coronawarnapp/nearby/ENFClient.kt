@@ -28,7 +28,9 @@ class ENFClient @Inject constructor(
     ): Boolean {
         Timber.d(
             "asyncProvideDiagnosisKeys(keyFiles=%s, configuration=%s, token=%s)",
-            keyFiles, configuration, token
+            keyFiles,
+            configuration,
+            token
         )
         return diagnosisKeyProvider.provideDiagnosisKeys(keyFiles, configuration, token)
     }

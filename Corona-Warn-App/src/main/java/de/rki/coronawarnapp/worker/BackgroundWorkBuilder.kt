@@ -20,7 +20,8 @@ import java.util.concurrent.TimeUnit
  */
 fun buildDiagnosisKeyRetrievalPeriodicWork() =
     PeriodicWorkRequestBuilder<DiagnosisKeyRetrievalPeriodicWorker>(
-        BackgroundWorkHelper.getDiagnosisKeyRetrievalPeriodicWorkTimeInterval(), TimeUnit.MINUTES
+        BackgroundWorkHelper.getDiagnosisKeyRetrievalPeriodicWorkTimeInterval(),
+        TimeUnit.MINUTES
     )
         .addTag(WorkTag.DIAGNOSIS_KEY_RETRIEVAL_PERIODIC_WORKER.tag)
         .setInitialDelay(

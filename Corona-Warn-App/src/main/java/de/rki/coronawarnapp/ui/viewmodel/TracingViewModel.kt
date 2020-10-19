@@ -72,37 +72,27 @@ class TracingViewModel @Inject constructor() : CWAViewModel() {
                     View.GONE
         }
         additionalInformationVisibility.addSource(matchedKeyCount) {
+            val isInfoVisible = riskDetailPresenter.isAdditionalInfoVisible(
+                riskLevel.value ?: RiskLevelConstants.UNKNOWN_RISK_INITIAL,
+                it ?: 0
+            )
             additionalInformationVisibility.value =
-                if (riskDetailPresenter.isAdditionalInfoVisible(
-                        riskLevel.value ?: RiskLevelConstants.UNKNOWN_RISK_INITIAL,
-                        it ?: 0
-                    )
-                )
-                    View.VISIBLE
-                else
-                    View.GONE
+                if (isInfoVisible) View.VISIBLE else View.GONE
         }
         informationBodyNoticeVisibility.addSource(riskLevel) {
+            val isVisible = riskDetailPresenter.isInformationBodyNoticeVisible(
+                it,
+                matchedKeyCount.value ?: -1
+            )
             informationBodyNoticeVisibility.value =
-                if (riskDetailPresenter.isInformationBodyNoticeVisible(
-                        it,
-                        matchedKeyCount.value ?: -1
-                    )
-                )
-                    View.VISIBLE
-                else
-                    View.GONE
+                if (isVisible) View.VISIBLE else View.GONE
         }
         informationBodyNoticeVisibility.addSource(matchedKeyCount) {
-            informationBodyNoticeVisibility.value =
-                if (riskDetailPresenter.isInformationBodyNoticeVisible(
-                        riskLevel.value ?: RiskLevelConstants.UNKNOWN_RISK_INITIAL,
-                        it ?: 0
-                    )
-                )
-                    View.VISIBLE
-                else
-                    View.GONE
+            val isVisible = riskDetailPresenter.isInformationBodyNoticeVisible(
+                riskLevel.value ?: RiskLevelConstants.UNKNOWN_RISK_INITIAL,
+                it ?: 0
+            )
+            informationBodyNoticeVisibility.value = if (isVisible) View.VISIBLE else View.GONE
         }
     }
 

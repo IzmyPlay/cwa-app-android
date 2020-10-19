@@ -45,7 +45,8 @@ object LocalData {
     fun isOnboarded(value: Boolean) = getSharedPreferenceInstance().edit(true) {
         putBoolean(
             CoronaWarnApplication.getAppContext()
-                .getString(R.string.preference_onboarding_completed), value
+                .getString(R.string.preference_onboarding_completed),
+            value
         )
     }
 
@@ -58,7 +59,8 @@ object LocalData {
     fun onboardingCompletedTimestamp(): Long? {
         val timestamp = getSharedPreferenceInstance().getLong(
             CoronaWarnApplication.getAppContext()
-                .getString(R.string.preference_onboarding_completed_timestamp), 0L
+                .getString(R.string.preference_onboarding_completed_timestamp),
+            0L
         )
 
         if (timestamp == 0L) return null
@@ -73,7 +75,8 @@ object LocalData {
     fun onboardingCompletedTimestamp(value: Long) = getSharedPreferenceInstance().edit(true) {
         putLong(
             CoronaWarnApplication.getAppContext()
-                .getString(R.string.preference_onboarding_completed_timestamp), value
+                .getString(R.string.preference_onboarding_completed_timestamp),
+            value
         )
     }
 
@@ -97,7 +100,8 @@ object LocalData {
     fun isBackgroundCheckDone(value: Boolean) = getSharedPreferenceInstance().edit(true) {
         putBoolean(
             CoronaWarnApplication.getAppContext()
-                .getString(R.string.preference_background_check_done), value
+                .getString(R.string.preference_background_check_done),
+            value
         )
     }
     /****************************************************
@@ -351,7 +355,8 @@ object LocalData {
         getSharedPreferenceInstance().edit(true) {
             putBoolean(
                 CoronaWarnApplication.getAppContext()
-                    .getString(R.string.preference_risk_days_explanation_shown), value
+                    .getString(R.string.preference_risk_days_explanation_shown),
+                value
             )
         }
 
@@ -679,7 +684,8 @@ object LocalData {
     }
 
     fun teletan(): String? = getSharedPreferenceInstance().getString(
-        CoronaWarnApplication.getAppContext().getString(R.string.preference_teletan), null
+        CoronaWarnApplication.getAppContext().getString(R.string.preference_teletan),
+        null
     )
 
     fun backgroundNotification(value: Boolean) = getSharedPreferenceInstance().edit(true) {
@@ -692,7 +698,8 @@ object LocalData {
 
     fun backgroundNotification(): Boolean = getSharedPreferenceInstance().getBoolean(
         CoronaWarnApplication.getAppContext()
-            .getString(R.string.preference_background_notification), false
+            .getString(R.string.preference_background_notification),
+        false
     )
 
     /****************************************************

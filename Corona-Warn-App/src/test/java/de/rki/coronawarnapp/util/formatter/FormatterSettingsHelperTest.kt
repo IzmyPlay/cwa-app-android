@@ -44,12 +44,15 @@ class FormatterSettingsHelperTest {
     private fun formatStatusBase(bValue: Boolean) {
         val result = formatStatus(value = bValue)
         assertThat(
-            result, `is`(
-                (formatText(
-                    bValue,
-                    R.string.settings_on,
-                    R.string.settings_off
-                ))
+            result,
+            `is`(
+                (
+                    formatText(
+                        bValue,
+                        R.string.settings_on,
+                        R.string.settings_off
+                    )
+                    )
             )
         )
     }
@@ -124,19 +127,23 @@ class FormatterSettingsHelperTest {
             location = bLocation
         )
         assertThat(
-            result, `is`(sValue)
+            result,
+            `is`(sValue)
         )
     }
 
     private fun formatNotificationsTitleBase(bValue: Boolean) {
         val result = formatNotificationsTitle(notifications = bValue)
         assertThat(
-            result, `is`(
-                (formatText(
-                    bValue,
-                    R.string.settings_notifications_headline_active,
-                    null
-                ))
+            result,
+            `is`(
+                (
+                    formatText(
+                        bValue,
+                        R.string.settings_notifications_headline_active,
+                        null
+                    )
+                    )
             )
         )
     }
@@ -144,12 +151,15 @@ class FormatterSettingsHelperTest {
     private fun formatNotificationsDescriptionBase(bValue: Boolean) {
         val result = formatNotificationsDescription(notifications = bValue)
         assertThat(
-            result, `is`(
-                (formatText(
-                    bValue,
-                    R.string.settings_notifications_body_active,
-                    null
-                ))
+            result,
+            `is`(
+                (
+                    formatText(
+                        bValue,
+                        R.string.settings_notifications_body_active,
+                        null
+                    )
+                    )
             )
         )
     }
@@ -157,7 +167,8 @@ class FormatterSettingsHelperTest {
     private fun formatIconColorBase(bActive: Boolean) {
         val result = formatIconColor(active = bActive)
         assertThat(
-            result, `is`(
+            result,
+            `is`(
                 (formatColor(bActive, R.color.colorAccentTintIcon, R.color.colorTextPrimary3))
             )
         )
@@ -175,7 +186,8 @@ class FormatterSettingsHelperTest {
             location = bLocation
         )
         assertThat(
-            result, `is`(bValue)
+            result,
+            `is`(bValue)
         )
     }
 
@@ -191,7 +203,8 @@ class FormatterSettingsHelperTest {
             location = bLocation
         )
         assertThat(
-            result, `is`(bValue)
+            result,
+            `is`(bValue)
         )
     }
 
@@ -207,7 +220,8 @@ class FormatterSettingsHelperTest {
         val result =
             formatTracingIcon(tracing = bTracing, bluetooth = bBluetooth, location = bLocation)
         assertThat(
-            result, CoreMatchers.isA(Int::class.java)
+            result,
+            CoreMatchers.isA(Int::class.java)
         )
     }
 
@@ -226,7 +240,8 @@ class FormatterSettingsHelperTest {
             location = bLocation
         )
         assertThat(
-            result, `is`(context.getColor(iColor))
+            result,
+            `is`(context.getColor(iColor))
         )
     }
 
@@ -245,7 +260,8 @@ class FormatterSettingsHelperTest {
             location = bLocation
         )
         assertThat(
-            result, `is`(CoreMatchers.equalTo(drawable))
+            result,
+            `is`(CoreMatchers.equalTo(drawable))
         )
     }
 
@@ -287,7 +303,8 @@ class FormatterSettingsHelperTest {
             R.drawable.ic_settings_illustration_notification_off
         )
         assertThat(
-            result, `is`(CoreMatchers.equalTo(drawable))
+            result,
+            `is`(CoreMatchers.equalTo(drawable))
         )
     }
 
@@ -306,7 +323,8 @@ class FormatterSettingsHelperTest {
         formatNotificationsStatusTextBase(
             bNotifications = true,
             bNotificationsRisk = true,
-            bNotificationsTest = true, bValue = true
+            bNotificationsTest = true,
+            bValue = true
         )
 
         // When notifications is false, notificationsRisk is false, notificationsTest is false
@@ -956,7 +974,8 @@ class FormatterSettingsHelperTest {
         val result =
             formatSettingsBackgroundPriorityIconColor(enabled)
         assertThat(
-            result, `is`(context.getColor(expectedColor))
+            result,
+            `is`(context.getColor(expectedColor))
         )
     }
 
@@ -985,7 +1004,8 @@ class FormatterSettingsHelperTest {
         val result =
             formatSettingsBackgroundPriorityIcon(enabled)
         assertThat(
-            result, `is`(context.getDrawable(expectedDrawable))
+            result,
+            `is`(context.getDrawable(expectedDrawable))
         )
     }
 

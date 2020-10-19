@@ -46,16 +46,22 @@ class SubmissionSymptomIntroductionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setButtonOnClickListener()
 
-        submissionViewModel.symptomIntroductionEvent.observe(viewLifecycleOwner, {
-            when (it) {
-                is SymptomIntroductionEvent.NavigateToSymptomCalendar -> navigateToNext()
-                is SymptomIntroductionEvent.NavigateToPreviousScreen -> handleSubmissionCancellation()
+        submissionViewModel.symptomIntroductionEvent.observe(
+            viewLifecycleOwner,
+            {
+                when (it) {
+                    is SymptomIntroductionEvent.NavigateToSymptomCalendar -> navigateToNext()
+                    is SymptomIntroductionEvent.NavigateToPreviousScreen -> handleSubmissionCancellation()
+                }
             }
-        })
+        )
 
-        submissionViewModel.symptomIndication.observe(viewLifecycleOwner, {
-            updateButtons(it)
-        })
+        submissionViewModel.symptomIndication.observe(
+            viewLifecycleOwner,
+            {
+                updateButtons(it)
+            }
+        )
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backCallback)
 

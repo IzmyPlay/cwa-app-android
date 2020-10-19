@@ -136,13 +136,16 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
             R.string.onboarding_energy_optimized_dialog_body,
             R.string.onboarding_energy_optimized_dialog_button_positive,
             R.string.onboarding_energy_optimized_dialog_button_negative,
-            false, {
+            false,
+            {
                 // go to battery optimization
                 startActivitySafely(powerManagement.disableBatteryOptimizationsIntent)
-            }, {
+            },
+            {
                 // keep battery optimization enabled
                 showManualCheckingRequiredDialog()
-            })
+            }
+        )
         DialogHelper.showDialog(dialog)
     }
 
@@ -171,7 +174,8 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
             R.string.onboarding_background_fetch_dialog_body,
             R.string.onboarding_background_fetch_dialog_button_positive,
             R.string.onboarding_background_fetch_dialog_button_negative,
-            false, {
+            false,
+            {
                 val intent = Intent(
                     Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                     Uri.fromParts("package", packageName, null)
@@ -180,9 +184,11 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
                 startActivity(intent)
                 // show battery optimization system dialog after background processing dialog
                 checkForEnergyOptimizedEnabled()
-            }, {
+            },
+            {
                 // declined
-            })
+            }
+        )
         DialogHelper.showDialog(dialog)
     }
 

@@ -26,7 +26,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @Suppress("MagicNumber", "LongMethod")
-class TestRiskLevelCalculationFragment : Fragment(R.layout.fragment_test_risk_level_calculation),
+class TestRiskLevelCalculationFragment :
+    Fragment(R.layout.fragment_test_risk_level_calculation),
     AutoInject {
     private val navArgs by navArgs<TestRiskLevelCalculationFragmentArgs>()
 
@@ -59,7 +60,8 @@ class TestRiskLevelCalculationFragment : Fragment(R.layout.fragment_test_risk_le
         binding.buttonResetRiskLevel.setOnClickListener { vm.resetRiskLevel() }
         vm.riskLevelResetEvent.observe2(this) {
             Toast.makeText(
-                requireContext(), "Reset done, please fetch diagnosis keys from server again",
+                requireContext(),
+                "Reset done, please fetch diagnosis keys from server again",
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -109,7 +111,9 @@ class TestRiskLevelCalculationFragment : Fragment(R.layout.fragment_test_risk_le
             Timber.i("Keys scanned: %s", key)
             if (key == null) {
                 Toast.makeText(
-                    requireContext(), "No Key data found in QR code", Toast.LENGTH_SHORT
+                    requireContext(),
+                    "No Key data found in QR code",
+                    Toast.LENGTH_SHORT
                 ).show()
                 return@getOthersKeys Unit
             }

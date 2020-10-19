@@ -43,15 +43,20 @@ class WatchdogService @Inject constructor(
             val wifiLock = createWifiLock()
             try {
                 BackgroundWorkHelper.sendDebugNotification(
-                    "Automatic mode is on", "Check if we have downloaded keys already today"
+                    "Automatic mode is on",
+                    "Check if we have downloaded keys already today"
                 )
                 RetrieveDiagnosisKeysTransaction.startWithConstraints()
             } catch (e: Exception) {
                 BackgroundWorkHelper.sendDebugNotification(
                     "RetrieveDiagnosisKeysTransaction failed",
-                    (e.localizedMessage
-                        ?: "Unknown exception occurred in onCreate") + "\n\n" + (e.cause
-                        ?: "Cause is unknown").toString()
+                    (
+                        e.localizedMessage
+                            ?: "Unknown exception occurred in onCreate"
+                        ) + "\n\n" + (
+                        e.cause
+                            ?: "Cause is unknown"
+                        ).toString()
                 )
                 // retry the key retrieval in case of an error with a scheduled work
                 BackgroundWorkScheduler.scheduleDiagnosisKeyOneTimeWork()

@@ -47,19 +47,25 @@ class SubmissionSymptomCalendarFragment : Fragment() {
 
         binding.symptomCalendarContainer.setDateSelectedListener(submissionViewModel::onDateSelected)
 
-        submissionViewModel.symptomCalendarEvent.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is SymptomCalendarEvent.NavigateToNext -> navigateToSymptomFinish()
-                is SymptomCalendarEvent.NavigateToPrevious -> navigateToPreviousScreen()
+        submissionViewModel.symptomCalendarEvent.observe(
+            viewLifecycleOwner,
+            Observer {
+                when (it) {
+                    is SymptomCalendarEvent.NavigateToNext -> navigateToSymptomFinish()
+                    is SymptomCalendarEvent.NavigateToPrevious -> navigateToPreviousScreen()
+                }
             }
-        })
+        )
 
-        submissionViewModel.symptomStart.observe(viewLifecycleOwner, Observer {
-            updateButtons(it)
-            if (it !is Symptoms.StartOf.Date) {
-                binding.symptomCalendarContainer.unsetSelection()
+        submissionViewModel.symptomStart.observe(
+            viewLifecycleOwner,
+            Observer {
+                updateButtons(it)
+                if (it !is Symptoms.StartOf.Date) {
+                    binding.symptomCalendarContainer.unsetSelection()
+                }
             }
-        })
+        )
 
         submissionViewModel.initSymptomStart()
     }
@@ -72,7 +78,8 @@ class SubmissionSymptomCalendarFragment : Fragment() {
             .findViewById<Button>(R.id.calendar_button_seven_days).backgroundTintList =
             ColorStateList.valueOf(
                 formatCalendarBackgroundButtonStyleByState(
-                    symptomStart, Symptoms.StartOf.LastSevenDays
+                    symptomStart,
+                    Symptoms.StartOf.LastSevenDays
                 )
             )
 
@@ -83,7 +90,8 @@ class SubmissionSymptomCalendarFragment : Fragment() {
             .findViewById<Button>(R.id.calendar_button_one_two_weeks).backgroundTintList =
             ColorStateList.valueOf(
                 formatCalendarBackgroundButtonStyleByState(
-                    symptomStart, Symptoms.StartOf.OneToTwoWeeksAgo
+                    symptomStart,
+                    Symptoms.StartOf.OneToTwoWeeksAgo
                 )
             )
 
@@ -94,7 +102,8 @@ class SubmissionSymptomCalendarFragment : Fragment() {
             .findViewById<Button>(R.id.calendar_button_more_than_two_weeks).backgroundTintList =
             ColorStateList.valueOf(
                 formatCalendarBackgroundButtonStyleByState(
-                    symptomStart, Symptoms.StartOf.MoreThanTwoWeeks
+                    symptomStart,
+                    Symptoms.StartOf.MoreThanTwoWeeks
                 )
             )
 
@@ -105,7 +114,8 @@ class SubmissionSymptomCalendarFragment : Fragment() {
             .findViewById<Button>(R.id.target_button_verify).backgroundTintList =
             ColorStateList.valueOf(
                 formatCalendarBackgroundButtonStyleByState(
-                    symptomStart, Symptoms.StartOf.NoInformation
+                    symptomStart,
+                    Symptoms.StartOf.NoInformation
                 )
             )
 
@@ -117,13 +127,17 @@ class SubmissionSymptomCalendarFragment : Fragment() {
     }
 
     private fun navigateToSymptomFinish() {
-        findNavController().doNavigate(SubmissionSymptomCalendarFragmentDirections
-            .actionSubmissionSymptomCalendarFragmentToSubmissionResultPositiveOtherWarningFragment())
+        findNavController().doNavigate(
+            SubmissionSymptomCalendarFragmentDirections
+                .actionSubmissionSymptomCalendarFragmentToSubmissionResultPositiveOtherWarningFragment()
+        )
     }
 
     private fun navigateToPreviousScreen() {
-        findNavController().doNavigate(SubmissionSymptomCalendarFragmentDirections
-            .actionSubmissionCalendarFragmentToSubmissionSymptomIntroductionFragment())
+        findNavController().doNavigate(
+            SubmissionSymptomCalendarFragmentDirections
+                .actionSubmissionCalendarFragmentToSubmissionSymptomIntroductionFragment()
+        )
     }
 
     private fun setButtonOnClickListener() {

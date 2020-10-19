@@ -92,7 +92,9 @@ object BackgroundWorkScheduler {
             notificationBody.append("[DIAGNOSIS_TEST_RESULT_PERIODIC_WORKER]")
         }
         BackgroundWorkHelper.sendDebugNotification(
-            "Background Job Starting", notificationBody.toString())
+            "Background Job Starting",
+            notificationBody.toString()
+        )
     }
 
     /**
@@ -145,7 +147,9 @@ object BackgroundWorkScheduler {
                 .also { it.logOperationCancelByTag(workTag) }
         }
         BackgroundWorkHelper.sendDebugNotification(
-            "All Background Jobs Stopped", "All Background Jobs Stopped")
+            "All Background Jobs Stopped",
+            "All Background Jobs Stopped"
+        )
     }
 
     /**
@@ -277,22 +281,32 @@ object BackgroundWorkScheduler {
      * Log operation schedule
      */
     private fun Operation.logOperationSchedule(workType: WorkType) =
-        this.result.addListener({
-            Timber.d("${workType.uniqueName} completed.")
-            BackgroundWorkHelper.sendDebugNotification(
-                "Background Job Started", "${workType.uniqueName} scheduled")
-        }, { it.run() })
+        this.result.addListener(
+            {
+                Timber.d("${workType.uniqueName} completed.")
+                BackgroundWorkHelper.sendDebugNotification(
+                    "Background Job Started",
+                    "${workType.uniqueName} scheduled"
+                )
+            },
+            { it.run() }
+        )
             .also { if (BuildConfig.DEBUG) Timber.d("${workType.uniqueName} scheduled.") }
 
     /**
      * Log operation cancellation
      */
     private fun Operation.logOperationCancelByTag(workTag: WorkTag) =
-        this.result.addListener({
-            Timber.d("All work with tag ${workTag.tag} canceled.")
-            BackgroundWorkHelper.sendDebugNotification(
-                "Background Job canceled", "${workTag.tag} canceled")
-        }, { it.run() })
+        this.result.addListener(
+            {
+                Timber.d("All work with tag ${workTag.tag} canceled.")
+                BackgroundWorkHelper.sendDebugNotification(
+                    "Background Job canceled",
+                    "${workTag.tag} canceled"
+                )
+            },
+            { it.run() }
+        )
             .also { if (BuildConfig.DEBUG) Timber.d("Canceling all work with tag ${workTag.tag}") }
 
     /**

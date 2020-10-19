@@ -35,7 +35,7 @@ class RiskLevelAndKeyRetrievalBenchmark(
         var resultInfo = StringBuilder()
             .append(
                 "MEASUREMENT Running for Countries:\n " +
-                        "${countries.joinToString(", ")}\n\n"
+                    "${countries.joinToString(", ")}\n\n"
             )
             .append("Result: \n\n")
             .append("#\t Combined \t Download \t Sub \t Risk \t File # \t  F. size\n")
@@ -60,9 +60,11 @@ class RiskLevelAndKeyRetrievalBenchmark(
                         keyFileCount = keyCount
                         keyFileDownloadDuration = duration
                         keyFilesSize = totalFileSize
-                    }, apiSubmissionFinished = { duration ->
+                    },
+                    apiSubmissionFinished = { duration ->
                         apiSubmissionDuration = duration
-                    })
+                    }
+                )
             } catch (e: TransactionException) {
                 keyRetrievalError = e.message.toString()
             }
@@ -79,9 +81,9 @@ class RiskLevelAndKeyRetrievalBenchmark(
             // build result entry for current iteration with all gathered data
             resultInfo.append(
                 "${index + 1}. \t ${calculationDuration + keyFileDownloadDuration + apiSubmissionDuration} ms \t " +
-                        "$keyFileDownloadDuration ms " + "\t $apiSubmissionDuration ms" +
-                        "\t $calculationDuration ms \t $keyFileCount \t " +
-                        "${Formatter.formatFileSize(context, keyFilesSize)}\n"
+                    "$keyFileDownloadDuration ms " + "\t $apiSubmissionDuration ms" +
+                    "\t $calculationDuration ms \t $keyFileCount \t " +
+                    "${Formatter.formatFileSize(context, keyFilesSize)}\n"
             )
 
             if (keyRetrievalError.isNotEmpty()) {

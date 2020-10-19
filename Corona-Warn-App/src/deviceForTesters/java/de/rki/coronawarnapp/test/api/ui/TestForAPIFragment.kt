@@ -76,8 +76,10 @@ import java.util.UUID
 import javax.inject.Inject
 
 @SuppressWarnings("TooManyFunctions", "MagicNumber", "LongMethod")
-class TestForAPIFragment : Fragment(R.layout.fragment_test_for_a_p_i),
-    InternalExposureNotificationPermissionHelper.Callback, AutoInject {
+class TestForAPIFragment :
+    Fragment(R.layout.fragment_test_for_a_p_i),
+    InternalExposureNotificationPermissionHelper.Callback,
+    AutoInject {
 
     @Inject lateinit var viewModelFactory: CWAViewModelFactoryProvider.Factory
     private val vm: TestForApiFragmentViewModel by cwaViewModels { viewModelFactory }
@@ -419,11 +421,14 @@ class TestForAPIFragment : Fragment(R.layout.fragment_test_for_a_p_i),
 
     private fun shareMyKeys() {
         if (myExposureKeysJSON != null) {
-            val share = Intent.createChooser(Intent().apply {
-                action = Intent.ACTION_SEND
-                type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, myExposureKeysJSON)
-            }, null)
+            val share = Intent.createChooser(
+                Intent().apply {
+                    action = Intent.ACTION_SEND
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_TEXT, myExposureKeysJSON)
+                },
+                null
+            )
             startActivity(share)
         } else {
             showToast("No Exposure Keys to share - Press 'Get Exposure Keys' first")

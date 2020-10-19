@@ -38,8 +38,9 @@ class SubmissionQRCodeInfoFragment : Fragment(R.layout.fragment_submission_qr_co
 
         viewModel.navigateToQRScan.observe2(this) {
             findNavController().doNavigate(
-                    SubmissionQRCodeInfoFragmentDirections
-                        .actionSubmissionQRCodeInfoFragmentToSubmissionQRCodeScanFragment())
+                SubmissionQRCodeInfoFragmentDirections
+                    .actionSubmissionQRCodeInfoFragmentToSubmissionQRCodeScanFragment()
+            )
         }
     }
 }

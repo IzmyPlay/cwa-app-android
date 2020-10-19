@@ -62,8 +62,10 @@ class DiagnosisTestResultRetrievalPeriodicWorkerTest {
 
         val slot = slot<String>()
         every { BackgroundWorkScheduler["isWorkActive"](capture(slot)) } answers {
-            !(slot.isCaptured && slot.captured ==
-                    BackgroundWorkScheduler.WorkTag.DIAGNOSIS_TEST_RESULT_RETRIEVAL_PERIODIC_WORKER.tag)
+            !(
+                slot.isCaptured && slot.captured ==
+                    BackgroundWorkScheduler.WorkTag.DIAGNOSIS_TEST_RESULT_RETRIEVAL_PERIODIC_WORKER.tag
+                )
         }
     }
 
@@ -75,7 +77,7 @@ class DiagnosisTestResultRetrievalPeriodicWorkerTest {
     @Test
     fun testDiagnosisTestResultRetrievalPeriodicWorkerCancel() {
         val past = System.currentTimeMillis() -
-                (BackgroundConstants.POLLING_VALIDITY_MAX_DAYS.toLong() + 1).daysToMilliseconds()
+            (BackgroundConstants.POLLING_VALIDITY_MAX_DAYS.toLong() + 1).daysToMilliseconds()
         testDiagnosisTestResultRetrievalPeriodicWorkerForResult(mockk(), past, true)
     }
 

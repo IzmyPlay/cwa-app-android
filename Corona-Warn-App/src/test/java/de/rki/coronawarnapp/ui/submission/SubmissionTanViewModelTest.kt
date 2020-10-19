@@ -42,7 +42,8 @@ class SubmissionTanViewModelTest {
             sr.setTeletan(
                 withArg {
                     assertEquals(it, tan)
-                })
+                }
+            )
         }
     }
 }

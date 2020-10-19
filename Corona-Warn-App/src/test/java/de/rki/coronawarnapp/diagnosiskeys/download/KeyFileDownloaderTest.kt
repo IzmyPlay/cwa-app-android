@@ -78,7 +78,8 @@ class KeyFileDownloaderTest : BaseIOTest() {
         }
 
         coEvery { server.getDayIndex("DE".loc) } returns listOf(
-            "2020-09-01".day, "2020-09-02".day
+            "2020-09-01".day,
+            "2020-09-02".day
         )
         coEvery {
             server.getHourIndex("DE".loc, "2020-09-01".day)
@@ -91,7 +92,8 @@ class KeyFileDownloaderTest : BaseIOTest() {
         } returns (0..12).map { "$it".hour }
 
         coEvery { server.getDayIndex("NL".loc) } returns listOf(
-            "2020-09-01".day, "2020-09-02".day
+            "2020-09-01".day,
+            "2020-09-02".day
         )
         coEvery {
             server.getHourIndex("NL".loc, "2020-09-01".day)

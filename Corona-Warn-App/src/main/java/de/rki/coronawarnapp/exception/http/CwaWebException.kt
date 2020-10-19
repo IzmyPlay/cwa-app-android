@@ -4,7 +4,8 @@ import de.rki.coronawarnapp.exception.reporting.ErrorCodes
 import de.rki.coronawarnapp.exception.reporting.ReportedIOException
 
 open class CwaWebException(val statusCode: Int) : ReportedIOException(
-    ErrorCodes.CWA_WEB_REQUEST_PROBLEM.code, "error during web request, http status $statusCode"
+    ErrorCodes.CWA_WEB_REQUEST_PROBLEM.code,
+    "error during web request, http status $statusCode"
 )
 
 open class CwaServerError(statusCode: Int) : CwaWebException(statusCode) {

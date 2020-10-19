@@ -75,7 +75,8 @@ class ErrorReportReceiver(private val activity: Activity) : BroadcastReceiver() 
                             )
                         ).run {}
                     }
-                ))
+                )
+            )
         }
         Timber.e("[$category]${(prefix ?: "")} $message${(suffix ?: "")}")
     }

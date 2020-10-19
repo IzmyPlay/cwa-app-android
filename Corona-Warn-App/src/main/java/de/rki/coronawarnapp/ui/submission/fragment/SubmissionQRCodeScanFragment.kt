@@ -158,13 +158,14 @@ class SubmissionQRCodeScanFragment : Fragment(R.layout.fragment_submission_qr_co
     ) {
         // if permission was denied
         if (requestCode == REQUEST_CAMERA_PERMISSION_CODE &&
-            (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED)) {
-                if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
-                    showCameraPermissionRationaleDialog()
-                } else {
-                    // user permanently denied access to the camera
-                    showCameraPermissionDeniedDialog()
-                }
+            (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED)
+        ) {
+            if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+                showCameraPermissionRationaleDialog()
+            } else {
+                // user permanently denied access to the camera
+                showCameraPermissionDeniedDialog()
+            }
         }
     }
 

@@ -26,7 +26,8 @@ class DiagnosisKeyRetrievalOneTimeWorker(val context: Context, workerParams: Wor
         Timber.d("$id: doWork() started. Run attempt: $runAttemptCount")
 
         BackgroundWorkHelper.sendDebugNotification(
-            "KeyOneTime Executing: Start", "KeyOneTime started. Run attempt: $runAttemptCount "
+            "KeyOneTime Executing: Start",
+            "KeyOneTime started. Run attempt: $runAttemptCount "
         )
 
         var result = Result.success()
@@ -34,7 +35,8 @@ class DiagnosisKeyRetrievalOneTimeWorker(val context: Context, workerParams: Wor
             RetrieveDiagnosisKeysTransaction.startWithConstraints()
         } catch (e: Exception) {
             Timber.w(
-                e, "$id: Error during RetrieveDiagnosisKeysTransaction.startWithConstraints()."
+                e,
+                "$id: Error during RetrieveDiagnosisKeysTransaction.startWithConstraints()."
             )
 
             if (runAttemptCount > BackgroundConstants.WORKER_RETRY_COUNT_THRESHOLD) {
@@ -53,7 +55,8 @@ class DiagnosisKeyRetrievalOneTimeWorker(val context: Context, workerParams: Wor
         }
 
         BackgroundWorkHelper.sendDebugNotification(
-            "KeyOneTime Executing: End", "KeyOneTime result: $result "
+            "KeyOneTime Executing: End",
+            "KeyOneTime result: $result "
         )
 
         Timber.d("$id: doWork() finished with %s", result)

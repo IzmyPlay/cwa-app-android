@@ -19,6 +19,6 @@ class WrongReceiverException(
 ) : ReportedException(
     ErrorCodes.WRONG_RECEIVER_PROBLEM.code,
     "An error occurred during BroadcastReceiver onReceive function. " +
-            "Received action was $action, expected action was $expected",
+        "Received action was $action, expected action was $expected",
     cause
 )

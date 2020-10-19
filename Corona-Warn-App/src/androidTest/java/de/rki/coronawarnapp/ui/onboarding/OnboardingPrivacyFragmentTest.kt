@@ -21,9 +21,11 @@ class OnboardingPrivacyFragmentTest : BaseUITest() {
     fun setup() {
         MockKAnnotations.init(this, relaxed = true)
 
-        setupMockViewModel(object : OnboardingPrivacyViewModel.Factory {
-            override fun create(): OnboardingPrivacyViewModel = viewModel
-        })
+        setupMockViewModel(
+            object : OnboardingPrivacyViewModel.Factory {
+                override fun create(): OnboardingPrivacyViewModel = viewModel
+            }
+        )
     }
 
     @After

@@ -78,7 +78,7 @@ enum class RiskLevel(val raw: Int) {
             currentRiskLevel: RiskLevel
         ): Boolean {
             return HIGH_RISK_LEVELS.contains(previousRiskLevel) && LOW_RISK_LEVELS.contains(currentRiskLevel) ||
-                    LOW_RISK_LEVELS.contains(previousRiskLevel) && HIGH_RISK_LEVELS.contains(currentRiskLevel)
+                LOW_RISK_LEVELS.contains(previousRiskLevel) && HIGH_RISK_LEVELS.contains(currentRiskLevel)
         }
     }
 }

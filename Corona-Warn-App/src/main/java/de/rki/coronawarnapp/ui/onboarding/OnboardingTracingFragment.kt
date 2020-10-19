@@ -26,8 +26,10 @@ import javax.inject.Inject
  * @see InternalExposureNotificationPermissionHelper
  * @see AlertDialog
  */
-class OnboardingTracingFragment : Fragment(R.layout.fragment_onboarding_tracing),
-    InternalExposureNotificationPermissionHelper.Callback, AutoInject {
+class OnboardingTracingFragment :
+    Fragment(R.layout.fragment_onboarding_tracing),
+    InternalExposureNotificationPermissionHelper.Callback,
+    AutoInject {
 
     private lateinit var internalExposureNotificationPermissionHelper: InternalExposureNotificationPermissionHelper
     private val binding: FragmentOnboardingTracingBinding by viewBindingLazy()
@@ -64,17 +66,19 @@ class OnboardingTracingFragment : Fragment(R.layout.fragment_onboarding_tracing)
                 is OnboardingNavigationEvents.NavigateToOnboardingTest ->
                     internalExposureNotificationPermissionHelper.requestPermissionToStartTracing()
                 is OnboardingNavigationEvents.ShowCancelDialog ->
-                    DialogHelper.showDialog(DialogHelper.DialogInstance(
-                        requireActivity(),
-                        R.string.onboarding_tracing_dialog_headline,
-                        R.string.onboarding_tracing_dialog_body,
-                        R.string.onboarding_tracing_dialog_button_positive,
-                        R.string.onboarding_tracing_dialog_button_negative,
-                        true,
-                        {
-                            navigateToOnboardingTestFragment()
-                        }
-                    ))
+                    DialogHelper.showDialog(
+                        DialogHelper.DialogInstance(
+                            requireActivity(),
+                            R.string.onboarding_tracing_dialog_headline,
+                            R.string.onboarding_tracing_dialog_body,
+                            R.string.onboarding_tracing_dialog_button_positive,
+                            R.string.onboarding_tracing_dialog_button_negative,
+                            true,
+                            {
+                                navigateToOnboardingTestFragment()
+                            }
+                        )
+                    )
                 is OnboardingNavigationEvents.NavigateToOnboardingPrivacy ->
                     (requireActivity() as OnboardingActivity).goBack()
             }

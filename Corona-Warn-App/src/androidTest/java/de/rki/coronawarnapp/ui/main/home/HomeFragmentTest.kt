@@ -21,9 +21,11 @@ class HomeFragmentTest : BaseUITest() {
     fun setup() {
         MockKAnnotations.init(this, relaxed = true)
 
-        setupMockViewModel(object : HomeFragmentViewModel.Factory {
-            override fun create(): HomeFragmentViewModel = viewModel
-        })
+        setupMockViewModel(
+            object : HomeFragmentViewModel.Factory {
+                override fun create(): HomeFragmentViewModel = viewModel
+            }
+        )
     }
 
     @After

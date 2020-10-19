@@ -65,7 +65,8 @@ class TanInput(context: Context, attrs: AttributeSet) : ViewGroup(context, attrs
         setOnClickListener { showKeyboard() }
 
         // initially show the keyboard
-        Handler().postDelayed({ showKeyboard() },
+        Handler().postDelayed(
+            { showKeyboard() },
             KEYBOARD_TRIGGER_DELAY
         )
     }
@@ -206,7 +207,7 @@ class TanInput(context: Context, attrs: AttributeSet) : ViewGroup(context, attrs
     private fun calculateDigitDimension(availableWith: Int, textSize: Int): Pair<Int, Int> {
         val widthRequiredForSpacing =
             (DIGIT_SPACING_COUNT * getDimension(R.dimen.submission_tan_total_digit_spacing)) +
-                    (GROUP_SPACING_COUNT * getDimension(R.dimen.submission_tan_total_group_spacing))
+                (GROUP_SPACING_COUNT * getDimension(R.dimen.submission_tan_total_group_spacing))
 
         val remainingWidthForDigits = availableWith - widthRequiredForSpacing
 

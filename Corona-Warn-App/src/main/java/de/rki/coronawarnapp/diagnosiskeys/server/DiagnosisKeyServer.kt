@@ -59,7 +59,10 @@ class DiagnosisKeyServer @Inject constructor(
     ): DownloadInfo = withContext(Dispatchers.IO) {
         Timber.tag(TAG).v(
             "Starting download: country=%s, day=%s, hour=%s -> %s.",
-            locationCode, day, hour, saveTo
+            locationCode,
+            day,
+            hour,
+            saveTo
         )
 
         if (saveTo.exists()) {

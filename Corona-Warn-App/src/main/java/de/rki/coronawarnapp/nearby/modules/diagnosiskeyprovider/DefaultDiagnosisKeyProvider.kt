@@ -45,8 +45,11 @@ class DefaultDiagnosisKeyProvider @Inject constructor(
             }
         } catch (e: Exception) {
             Timber.e(
-                e, "Error during provideDiagnosisKeys(keyFiles=%s, configuration=%s, token=%s)",
-                keyFiles, configuration, token
+                e,
+                "Error during provideDiagnosisKeys(keyFiles=%s, configuration=%s, token=%s)",
+                keyFiles,
+                configuration,
+                token
             )
             throw e
         }

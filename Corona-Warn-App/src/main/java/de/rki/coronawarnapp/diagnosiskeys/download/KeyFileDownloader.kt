@@ -74,7 +74,9 @@ class KeyFileDownloader @Inject constructor(
             val filteredCountries = availableCountries.filter { wantedCountries.contains(it) }
             Timber.tag(TAG).v(
                 "Available=%s; Wanted=%s; Intersect=%s",
-                availableCountries, wantedCountries, filteredCountries
+                availableCountries,
+                wantedCountries,
+                filteredCountries
             )
 
             val availableKeys =
@@ -271,7 +273,8 @@ class KeyFileDownloader @Inject constructor(
     ) = withContext(dispatcherProvider.IO) {
         Timber.tag(TAG).v(
             "asyncHandleLast3HoursFilesFetch(availableCountries=%s, hourLimit=%d)",
-            availableCountries, hourItemLimit
+            availableCountries,
+            hourItemLimit
         )
         val missingHours = determineMissingHours(availableCountries, hourItemLimit)
         Timber.tag(TAG).d("Downloading missing hours: %s", missingHours)
@@ -313,7 +316,8 @@ class KeyFileDownloader @Inject constructor(
         val preconditionHook: suspend (DownloadInfo) -> Boolean =
             { downloadInfo ->
                 val continueDownload = !legacyKeyCache.tryMigration(
-                    downloadInfo.serverMD5, saveTo
+                    downloadInfo.serverMD5,
+                    saveTo
                 )
                 continueDownload // Continue download if no migration happened
             }

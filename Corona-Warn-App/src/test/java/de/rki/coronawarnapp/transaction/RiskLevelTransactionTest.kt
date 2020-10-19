@@ -482,7 +482,8 @@ class RiskLevelTransactionTest {
 
         val testAppConfig = buildTestAppConfig()
         Assert.assertEquals(
-            RiskLevel.INCREASED_RISK, RiskLevelTransaction.getRiskLevel(
+            RiskLevel.INCREASED_RISK,
+            RiskLevelTransaction.getRiskLevel(
                 object : RiskLevelCalculation {
                     override fun calculateRiskScore(
                         attenuationParameters: ApplicationConfigurationOuterClass.AttenuationDuration,

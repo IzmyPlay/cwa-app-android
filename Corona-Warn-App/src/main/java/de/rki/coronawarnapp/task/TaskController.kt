@@ -111,7 +111,8 @@ class TaskController @Inject constructor(
             } else {
                 Timber.tag(TAG).w(
                     "TaskRequest was already used. Existing: %s\nNew request: %s",
-                    existingRequest, newRequest
+                    existingRequest,
+                    newRequest
                 )
             }
         }
@@ -174,7 +175,8 @@ class TaskController @Inject constructor(
                 }
                 Timber.tag(TAG).d("Task has %d siblings", siblingTasks.size)
                 Timber.tag(TAG).v(
-                    "Sibling are:\n%s", siblingTasks.joinToString("\n")
+                    "Sibling are:\n%s",
+                    siblingTasks.joinToString("\n")
                 )
 
                 // Handle collision behavior for tasks of same type

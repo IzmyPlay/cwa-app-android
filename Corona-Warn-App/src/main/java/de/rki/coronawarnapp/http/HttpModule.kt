@@ -28,11 +28,13 @@ class HttpModule {
     fun defaultHttpClient(): OkHttpClient {
         val interceptors: List<Interceptor> = listOf(
             WebSecurityVerificationInterceptor(),
-            HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-                override fun log(message: String) {
-                    Timber.tag("OkHttp").v(message)
+            HttpLoggingInterceptor(
+                object : HttpLoggingInterceptor.Logger {
+                    override fun log(message: String) {
+                        Timber.tag("OkHttp").v(message)
+                    }
                 }
-            }).apply {
+            ).apply {
                 if (BuildConfig.DEBUG) setLevel(HttpLoggingInterceptor.Level.BODY)
             },
             RetryInterceptor(),
