@@ -16,18 +16,28 @@ import de.rki.coronawarnapp.exception.http.CwaServerError
 import de.rki.coronawarnapp.exception.http.CwaWebException
 import de.rki.coronawarnapp.exception.http.ForbiddenException
 import de.rki.coronawarnapp.nearby.InternalExposureNotificationPermissionHelper
-import de.rki.coronawarnapp.ui.doNavigate
 import de.rki.coronawarnapp.ui.submission.ApiRequestState
+import de.rki.coronawarnapp.ui.submission.viewmodel.SubmissionNavigationEvents
+import de.rki.coronawarnapp.ui.submission.viewmodel.SubmissionResultPositiveOtherWarningViewModel
 import de.rki.coronawarnapp.ui.viewmodel.SubmissionViewModel
 import de.rki.coronawarnapp.ui.viewmodel.TracingViewModel
 import de.rki.coronawarnapp.util.DialogHelper
+import de.rki.coronawarnapp.util.di.AutoInject
 import de.rki.coronawarnapp.util.observeEvent
+import de.rki.coronawarnapp.util.ui.doNavigate
+import de.rki.coronawarnapp.util.ui.observe2
 import de.rki.coronawarnapp.util.ui.viewBindingLazy
+import de.rki.coronawarnapp.util.viewmodel.CWAViewModelFactoryProvider
+import de.rki.coronawarnapp.util.viewmodel.cwaViewModels
+import javax.inject.Inject
 
 class SubmissionResultPositiveOtherWarningFragment :
     Fragment(R.layout.fragment_submission_positive_other_warning),
-    InternalExposureNotificationPermissionHelper.Callback {
+    InternalExposureNotificationPermissionHelper.Callback,
+    AutoInject {
 
+    @Inject lateinit var viewModelFactory: CWAViewModelFactoryProvider.Factory
+    private val viewModel: SubmissionResultPositiveOtherWarningViewModel by cwaViewModels { viewModelFactory }
     private val submissionViewModel: SubmissionViewModel by activityViewModels()
     private val tracingViewModel: TracingViewModel by activityViewModels()
 
@@ -102,7 +112,7 @@ class SubmissionResultPositiveOtherWarningFragment :
             viewLifecycleOwner,
             {
                 if (it == ApiRequestState.SUCCESS) {
-                    navigateToSubmissionDoneFragment()
+                    viewModel.onSubmissionComplete()
                 }
             }
         )
@@ -111,14 +121,27 @@ class SubmissionResultPositiveOtherWarningFragment :
     private fun setButtonOnClickListener() {
         binding.submissionPositiveOtherWarningButtonNext.setOnClickListener {
             initiateWarningOthers()
+            viewModel.onWarnOthersPressed()
         }
         binding.submissionPositiveOtherWarningHeader.headerButtonBack.buttonIcon.setOnClickListener {
             findNavController().popBackStack()
+            viewModel.onBackPressed()
+        }
+
+        viewModel.routeToScreen.observe2(this) {
+            when (it) {
+                is SubmissionNavigationEvents.NavigateToSubmissionIntro ->
+                    initiateWarningOthers()
+                is SubmissionNavigationEvents.NavigateToSubmissionDone ->
+                    navigateToSubmissionDoneFragment()
+                is SubmissionNavigationEvents.NavigateToTestResult ->
+                    findNavController().popBackStack()
+            }
         }
     }
 
     private fun navigateToSubmissionResultFragment() =
-        findNavController().doNavigate(
+        doNavigate(
             SubmissionResultPositiveOtherWarningFragmentDirections
                 .actionSubmissionResultPositiveOtherWarningFragmentToSubmissionResultFragment()
         )
@@ -128,7 +151,7 @@ class SubmissionResultPositiveOtherWarningFragment :
      * @see SubmissionDoneFragment
      */
     private fun navigateToSubmissionDoneFragment() =
-        findNavController().doNavigate(
+        doNavigate(
             SubmissionResultPositiveOtherWarningFragmentDirections
                 .actionSubmissionResultPositiveOtherWarningFragmentToSubmissionDoneFragment()
         )
@@ -161,7 +184,7 @@ class SubmissionResultPositiveOtherWarningFragment :
             submissionViewModel.submitDiagnosisKeys(keys)
         } else {
             submissionViewModel.submitWithNoDiagnosisKeys()
-            navigateToSubmissionDoneFragment()
+            viewModel.onSubmissionComplete()
         }
     }
 
